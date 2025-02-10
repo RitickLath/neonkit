@@ -20,7 +20,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="pt-24 lg:pt-0 w-full flex flex-col lg:flex-row items-center justify-evenly px-6">
+    <div className="pt-12 lg:pt-0 w-full flex flex-col lg:flex-row items-center justify-evenly px-6">
       {/* Left Side (Text) */}
       <div className="text-center md:text-left">
         <h1 className="font-bold text-white text-4xl sm:text-6xl lg:text-6xl">
@@ -30,7 +30,7 @@ const Home = () => {
           {word.letter}.
         </h1>
 
-        <p className="pt-3 max-w-[400px] sm:max-w-[500px] text-lg text-gray-400">
+        <p className="pt-3 max-w-[400px] sm:max-w-[500px] sm:text-lg text-gray-400">
           NeonKit provides a complete set of UI components, gradients,
           templates, and color palettes to streamline your web development
           process. Design and prototype faster with ready-to-use resources that
@@ -38,7 +38,7 @@ const Home = () => {
         </p>
 
         {/* Logos */}
-        <div className="flex flex-wrap justify-center md:justify-normal space-x-4 mt-6 text-white text-sm sm:text-lg">
+        <div className="flex flex-wrap space-y-1 justify-center md:justify-normal space-x-4 mt-6 text-white text-sm sm:text-lg">
           <div className="flex items-center space-x-1.5">
             <SiNextdotjs className="hover:text-gray-400 transition-all" />
             <p className="text-gray-400">Next.js</p>
