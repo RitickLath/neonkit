@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SiNextdotjs, SiReact, SiTailwindcss, SiFramer } from "react-icons/si";
 import Cards from "../Components/Cards";
 import { thirdWords } from "../constants/ThirdWord";
 import { motion } from "framer-motion";
@@ -35,6 +36,28 @@ const Home = () => {
           process. Design and prototype faster with ready-to-use resources that
           bring your ideas to life effortlessly.
         </p>
+
+        {/* Logos */}
+        <div className="flex flex-wrap justify-center md:justify-normal space-x-4 mt-6 text-white text-sm sm:text-lg">
+          <div className="flex items-center space-x-1.5">
+            <SiNextdotjs className="hover:text-gray-400 transition-all" />
+            <p className="text-gray-400">Next.js</p>
+          </div>
+          <div className="flex items-center space-x-1.5">
+            <SiReact className="text-blue-400 hover:text-blue-300 transition-all" />
+            <p className="text-gray-400">React</p>
+          </div>
+          <div className="flex items-center space-x-1.5">
+            <SiTailwindcss className="text-teal-400 hover:text-teal-300 transition-all" />
+            <p className="text-gray-400">TailwindCSS</p>
+          </div>
+          <div className="flex items-center space-x-1.5">
+            <SiFramer className="text-pink-500 hover:text-pink-400 transition-all" />
+            <p className="text-gray-400">Framer Motion</p>
+          </div>
+        </div>
+
+        {/* Random Button */}
         <motion.button
           whileHover={{
             scale: 1.1,
