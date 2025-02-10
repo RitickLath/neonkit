@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <nav className="bg-black text-white items-center flex space-x-8 lg:space-x-12 text-lg px-8 lg:px-12 lg:py-4 py-3">
+    <nav className=" text-white items-center flex space-x-8 lg:space-x-12 text-lg px-8 lg:px-12 lg:py-4 py-3">
       <a href="/" className="font-bold text-2xl tracking-wider">
         NeonKit
       </a>
@@ -11,12 +11,12 @@ const Navbar = () => {
         >
           Components
         </a>
-        <a
+        {/* <a
           href="/templates"
           className="hover:text-white cursor-pointer text-[#C8C8C8] text-base"
         >
           Templates
-        </a>
+        </a> */}
         <a
           href="/gradients"
           className="hover:text-white cursor-pointer text-[#C8C8C8] text-base"
