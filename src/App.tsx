@@ -11,17 +11,16 @@ import Background from "./background/Background";
 const App = () => {
   return (
     <BrowserRouter>
-      <Background>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/components" element={<ComponentLibrary />} />
-          <Route path="/gradients" element={<Gradient />} />
-          <Route path="/templates" element={<Templates />} />
-          <Route path="/text-gradient" element={<TextGradient />} />
-          <Route path="/Palettes" element={<Palettes />} />
-        </Routes>
-      </Background>
+      <Background />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/components" element={<ComponentLibrary />} />
+        <Route path="/gradients" element={<Gradient />} />
+        <Route path="/templates" element={<Templates />} />
+        <Route path="/text-gradient" element={<TextGradient />} />
+        <Route path="/Palettes" element={<Palettes />} />
+      </Routes>
     </BrowserRouter>
   );
 };
