@@ -6,6 +6,12 @@ import {
 } from "../constants/GradientShades";
 import { FaRegCopy, FaSyncAlt } from "react-icons/fa";
 
+interface StateType {
+  direction: number;
+  from: string;
+  to: string;
+}
+
 // Function to get a random color from the array
 const getRandomColor = (colors: string[][]) => {
   const category = Math.floor(Math.random() * colors.length);
@@ -27,7 +33,9 @@ const generateGradients = (count: number) => {
 };
 
 const LinearGradient = () => {
-  const [gradients, setGradients] = useState(generateGradients(12));
+  const [gradients, setGradients] = useState<StateType[]>(
+    generateGradients(12)
+  );
 
   const rotateGradient = (index: number) => {
     setGradients((prev) => {
@@ -38,7 +46,7 @@ const LinearGradient = () => {
     });
   };
 
-  const copyToClipboard = (gradient) => {
+  const copyToClipboard = (gradient: StateType) => {
     const className = `${gradientDirections[gradient.direction]} ${
       gradient.from
     } ${gradient.to}`;
@@ -75,13 +83,13 @@ const LinearGradient = () => {
               <div className="flex space-x-4">
                 <button
                   onClick={() => rotateGradient(i)}
-                  className="p-3 border border-gray-600 hover:bg-gray-700 rounded-lg shadow-md transition"
+                  className="p-3 border border-[#27272A] hover:bg-[#27272A] rounded-lg shadow-md transition"
                 >
                   <FaSyncAlt />
                 </button>
                 <button
                   onClick={() => copyToClipboard(g)}
-                  className="p-3 border border-gray-600 hover:bg-gray-700 rounded-lg shadow-md transition"
+                  className="p-3 border border-[#27272A] hover:bg-[#27272A] rounded-lg shadow-md transition"
                 >
                   <FaRegCopy />
                 </button>
