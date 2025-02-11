@@ -1,68 +1,54 @@
-import { prerenderColor } from "../constants/colorShades";
-import { FaRegCopy } from "react-icons/fa";
 import { useState } from "react";
+import TailwindColorPalette from "../Components/TailwindColorPalette";
+import PaletteButton from "../Components/PaletteButton";
 
 const Palettes = () => {
-  const [copiedColor, setCopiedColor] = useState("");
-
-  const handleCopy = (shade: string) => {
-    navigator.clipboard.writeText(shade);
-    setCopiedColor(shade);
-    setTimeout(() => setCopiedColor(""), 1500);
-  };
+  // State to toggle between Tailwind and Custom color palettes
+  const [isTailwindPalette, setIsTailwindPalette] = useState(true);
 
   return (
     <div className="p-6 flex flex-col items-center space-y-8">
       {/* Page Heading */}
-      <div className="text-left text-white max-w-2xl">
-        <h1 className="text-4xl font-bold mb-3">Tailwind CSS Color Palette</h1>
-        <p className="text-lg text-gray-300">
-          Explore the full range of Tailwind CSS colors. Click on a color to
-          copy its class name instantly!
+      <div className="text-center text-white max-w-2xl pt-12 lg:pt-16">
+        <h1 className="text-5xl lg:text-6xl font-bold mb-3">
+          Endless Color <span className="text-[#8B5DF5]">Palette</span>
+        </h1>
+        <p className="text-lg text-gray-300 max-w-[600px]">
+          Explore limitless color combinations with a mix of Tailwind CSS
+          classes and custom shades. Perfect for web design, branding, and
+          creative projects—click any color to instantly copy its class name!
         </p>
       </div>
 
-      {prerenderColor.map((shades, key) => (
-        <div key={key} className="w-full max-w-4xl">
-          {/* Display Palette Name */}
-          <h2 className="text-2xl font-semibold text-white mb-5 capitalize">
-            {shades[0].replace("bg-", "").replace("-50", "")}
-          </h2>
+      {/* Palette Selector Buttons */}
+      <div className=" justify-center items-center flex-col space-y-4 sm:flex sm:flex-row sm:space-y-0 sm:space-x-4 flex ">
+        {/* Tailwind Color Palette Button */}
+        <PaletteButton
+          isTailwindPalette={isTailwindPalette}
+          setIsTailwindPalette={setIsTailwindPalette}
+          text="Tailwind Color Palette"
+          value={true}
+        />
 
-          {/* Display Color Palette */}
-          <div className="grid lg:grid-cols-11 gap-3">
-            {shades.map((shade, index) => (
-              <div
-                key={index}
-                className={`h-12 lg:h-28 rounded-xl flex flex-col items-center justify-center cursor-pointer relative ${shade} shadow-lg`}
-                onClick={() => handleCopy(shade)}
-              >
-                <span
-                  className={`text-sm font-semibold ${
-                    index < 3 ? "text-black" : "text-white"
-                  }`}
-                >
-                  {shade
-                    .substring(shade.length - 3, shade.length)
-                    .replace("-", "")}
-                </span>
-                {copiedColor === shade && (
-                  <span className="absolute top-2 right-2 bg-white text-black text-xs px-2 py-1 rounded shadow-md">
-                    Copied!
-                  </span>
-                )}
-                <FaRegCopy
-                  className={`${
-                    index < 3
-                      ? "text-black hover:text-white"
-                      : "text-white hover:text-black"
-                  } absolute bottom-2 right-2 opacity-70 hover:opacity-100 transition-opacity`}
-                />
-              </div>
-            ))}
+        {/* Custom Color Palette Button */}
+        <PaletteButton
+          isTailwindPalette={!isTailwindPalette}
+          setIsTailwindPalette={setIsTailwindPalette}
+          text="Custom Color Palette"
+          value={false}
+        />
+      </div>
+
+      {/* Display based on state */}
+      <div className="mt-8 w-full max-w-4xl">
+        {isTailwindPalette ? (
+          <TailwindColorPalette />
+        ) : (
+          <div className="text-center text-white">
+            Custom Color Palette Coming Soon...
           </div>
-        </div>
-      ))}
+        )}
+      </div>
     </div>
   );
 };
