@@ -21,21 +21,21 @@ const getRandomColor = (colors: string[][]) => {
 
 // Initialize gradients array
 const generateGradients = (count: number) => {
-  const gradients = [];
-  for (let i = 0; i < count; i++) {
-    gradients.push({
-      direction: 0,
-      from: getRandomColor(fromColor),
-      to: getRandomColor(toColor),
-    });
-  }
-  return gradients;
+  return Array.from({ length: count }, () => ({
+    direction: 0,
+    from: getRandomColor(fromColor),
+    to: getRandomColor(toColor),
+  }));
 };
 
 const LinearGradient = () => {
   const [gradients, setGradients] = useState<StateType[]>(
     generateGradients(12)
   );
+
+  const loadMore = () => {
+    setGradients((prev) => [...prev, ...generateGradients(10)]);
+  };
 
   const rotateGradient = (index: number) => {
     setGradients((prev) => {
@@ -66,7 +66,7 @@ const LinearGradient = () => {
       </div>
 
       {/* Gradient Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {gradients.map((g, i) => {
           const gradientClass = `${gradientDirections[g.direction]} ${g.from} ${
             g.to
@@ -98,6 +98,14 @@ const LinearGradient = () => {
           );
         })}
       </div>
+
+      {/* Load More Button */}
+      <button
+        onClick={loadMore}
+        className="mt-0 p-3 font-semibold cursor-pointer border border-[#27272A] hover:bg-[#27272A] rounded-lg shadow-md transition"
+      >
+        Load More
+      </button>
     </div>
   );
 };
