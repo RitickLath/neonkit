@@ -25,7 +25,7 @@ const Gradient = () => {
           isTailwindPalette={isLinearGradient}
           setIsTailwindPalette={setIsLinearGradient}
           text="Linear Gradient"
-          value={false}
+          value={true}
         />
 
         {/* Radial Gradient Button */}

@@ -1,5 +1,5 @@
 const RadialGradient = () => {
-  return <div>RadialGradient</div>;
+  return <div className="text-white">Coming Soon...</div>;
 };
 
 export default RadialGradient;
