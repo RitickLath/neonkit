@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   fromColor,
   toColor,
   gradientDirections,
 } from "../constants/GradientShades";
 import { FaRegCopy, FaSyncAlt } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa6";
 
 interface StateType {
   direction: number;
@@ -32,10 +33,13 @@ const LinearGradient = () => {
   const [gradients, setGradients] = useState<StateType[]>(
     generateGradients(12)
   );
+  const [copied, setCopied] = useState({ statue: true, index: -1 });
 
   const loadMore = () => {
     setGradients((prev) => [...prev, ...generateGradients(10)]);
   };
+
+  useEffect(() => {}, []);
 
   const rotateGradient = (index: number) => {
     setGradients((prev) => {
@@ -46,10 +50,11 @@ const LinearGradient = () => {
     });
   };
 
-  const copyToClipboard = (gradient: StateType) => {
+  const copyToClipboard = (gradient: StateType, i: number) => {
     const className = `${gradientDirections[gradient.direction]} ${
       gradient.from
     } ${gradient.to}`;
+    setCopied({ statue: true, index: i });
     navigator.clipboard.writeText(className);
   };
 
@@ -88,10 +93,14 @@ const LinearGradient = () => {
                   <FaSyncAlt />
                 </button>
                 <button
-                  onClick={() => copyToClipboard(g)}
+                  onClick={() => copyToClipboard(g, i)}
                   className="p-3 border border-[#27272A] hover:bg-[#27272A] rounded-lg shadow-md transition"
                 >
-                  <FaRegCopy />
+                  {copied.statue && copied.index != i ? (
+                    <FaRegCopy />
+                  ) : (
+                    <FaCheck />
+                  )}
                 </button>
               </div>
             </div>
