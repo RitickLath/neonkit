@@ -8,7 +8,7 @@ const Cards = ({ index }: { index: number }) => {
   return (
     <motion.div
       whileHover={{ y: -10 }}
-      className="w-[300px] h-[600px] relative flex justify-center items-center"
+      className="w-[300px] h-[450px] lg:h-[85vh] relative flex justify-center items-center"
     >
       {/* Card 1 - Design */}
       <motion.div

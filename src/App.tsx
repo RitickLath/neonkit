@@ -6,13 +6,22 @@ import Templates from "./Routes/Templates";
 import Navbar from "./Components/Navbar";
 import Palettes from "./Routes/Palettes";
 import TextGradient from "./Routes/TextGradient";
+import CTA from "./Components/CTA";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <CTA />
+            </>
+          }
+        />
         <Route path="/components" element={<ComponentLibrary />} />
         <Route path="/gradients" element={<Gradient />} />
         <Route path="/templates" element={<Templates />} />
