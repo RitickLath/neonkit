@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 import {
   fromColor,
   toColor,
@@ -30,17 +29,15 @@ const generateGradients = (count: number) => {
   }));
 };
 
-const LinearGradient = () => {
+const LinearGradientModular = ({ text }: { text: boolean }) => {
   const [gradients, setGradients] = useState<StateType[]>(
     generateGradients(12)
   );
-  const [copied, setCopied] = useState({ statue: true, index: -1 });
+  const [copied, setCopied] = useState({ status: false, index: -1 });
 
   const loadMore = () => {
     setGradients((prev) => [...prev, ...generateGradients(10)]);
   };
-
-  useEffect(() => {}, []);
 
   const rotateGradient = (index: number) => {
     setGradients((prev) => {
@@ -52,11 +49,13 @@ const LinearGradient = () => {
   };
 
   const copyToClipboard = (gradient: StateType, i: number) => {
+    // copt based on wheter text of bg selected
     const className = `${gradientDirections[gradient.direction]} ${
       gradient.from
-    } ${gradient.to}`;
-    setCopied({ statue: true, index: i });
+    } ${gradient.to} ${text ? "bg-clip-text text-transparent" : ""}`;
+    setCopied({ status: true, index: i });
     navigator.clipboard.writeText(className);
+    setTimeout(() => setCopied({ status: false, index: -1 }), 2000);
   };
 
   return (
@@ -64,7 +63,10 @@ const LinearGradient = () => {
       {/* Heading */}
       <div className="text-center max-w-2xl">
         <h1 className="text-4xl text-[#9F9E9C] lg:text-5xl font-bold mb-4">
-          Tailwind <span className="text-[#0ef864a9]">Linear Gradient</span>
+          Tailwind{" "}
+          <span className="text-[#0ef864a9]">
+            {text ? "Linear Text Gradient" : "Linear Gradient"}
+          </span>
         </h1>
         <p className="text-lg text-gray-300">
           Click rotate to change direction or copy the class name instantly!
@@ -74,16 +76,30 @@ const LinearGradient = () => {
       {/* Gradient Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {gradients.map((g, i) => {
-          const gradientClass = `${gradientDirections[g.direction]} ${g.from} ${
-            g.to
-          }`;
+          const gradientClass = `bg-gradient-to-r ${
+            gradientDirections[g.direction]
+          } ${g.from} ${g.to}`;
 
           return (
             <div key={i} className="flex flex-col items-center space-y-3">
-              {/* Gradient Box */}
+              {/* Gradient Box or Text */}
               <div
-                className={`cursor-pointer ${gradientClass} w-[350px] lg:w-[280px] h-[180px] rounded-xl shadow-lg transition-transform hover:scale-105`}
-              ></div>
+                className={`cursor-pointer ${
+                  text ? "flex items-center justify-center" : ""
+                } ${
+                  text ? "" : gradientClass
+                } w-[350px] lg:w-[280px] h-[180px] rounded-xl shadow-lg transition-transform hover:scale-105 ${
+                  text ? "bg-[#27272A] p-6" : ""
+                }`}
+              >
+                {text && (
+                  <h1
+                    className={`text-4xl font-bold ${gradientClass} bg-clip-text text-transparent`}
+                  >
+                    Gradient Text
+                  </h1>
+                )}
+              </div>
 
               {/* Buttons */}
               <div className="flex space-x-4">
@@ -97,10 +113,10 @@ const LinearGradient = () => {
                   onClick={() => copyToClipboard(g, i)}
                   className="p-3 border border-[#27272A] hover:bg-[#27272A] rounded-lg shadow-md transition"
                 >
-                  {copied.statue && copied.index != i ? (
-                    <FaRegCopy />
-                  ) : (
+                  {copied.status && copied.index === i ? (
                     <FaCheck />
+                  ) : (
+                    <FaRegCopy />
                   )}
                 </button>
               </div>
@@ -120,4 +136,4 @@ const LinearGradient = () => {
   );
 };
 
-export default LinearGradient;
+export default LinearGradientModular;

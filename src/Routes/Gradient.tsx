@@ -2,8 +2,8 @@ import { useState } from "react";
 import PaletteButton from "../Components/PaletteButton";
 import Heading from "../Components/Heading";
 import { Headings } from "../constants/Heading";
-import LinearGradient from "../Components/LinearGradient";
 import RadialGradient from "../Components/RadialGradient";
+import LinearGradientModular from "../Components/LinearGradientModular";
 
 const Gradient = () => {
   // State to toggle between Linear and Radial gradient
@@ -38,7 +38,11 @@ const Gradient = () => {
       </div>
 
       {/* Linear and Radial Gradient */}
-      {isLinearGradient ? <LinearGradient /> : <RadialGradient />}
+      {isLinearGradient ? (
+        <LinearGradientModular text={false} />
+      ) : (
+        <RadialGradient />
+      )}
     </div>
   );
 };
