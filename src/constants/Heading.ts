@@ -17,4 +17,10 @@ export const Headings = {
     description:
       "Enhance your typography with beautiful text gradients using Tailwind CSS. Create vibrant, eye-catching text effects with ease. Click to copy the class name and apply instantly!",
   },
+  componentLibrary: {
+    title: "Ultimate Tailwind",
+    subtitle: "Components",
+    description:
+      "A collection of beautifully designed, highly customizable UI components built with Tailwind CSS. Easily integrate these components into your projects and enhance your UI with minimal effort.",
+  },
 };
