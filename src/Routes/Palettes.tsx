@@ -12,9 +12,9 @@ const Palettes = () => {
     <div className="p-6 flex flex-col items-center space-y-8">
       {/* Page Heading */}
       <Heading
-        title={Headings.Palettes.title}
-        description={Headings.Palettes.description}
-        subtitle={Headings.Palettes.subtitle}
+        title={Headings.palettes.title}
+        description={Headings.palettes.description}
+        subtitle={Headings.palettes.subtitle}
       />
 
       {/* Palette Selector Buttons */}

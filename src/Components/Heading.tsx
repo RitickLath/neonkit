@@ -14,16 +14,18 @@ const Heading: React.FC<HeadingProps> = ({
   description,
 }) => {
   return (
-    <div className="text-center text-white max-w-2xl pt-12 lg:pt-16">
+    <div className="flex flex-col items-center text-white max-w-2xl pt-12 lg:pt-16">
       <motion.h1
         initial={{ letterSpacing: "3px" }}
         animate={{ letterSpacing: "0px" }}
         transition={{ duration: 3 }}
-        className="text-5xl lg:text-6xl font-bold mb-3"
+        className="text-5xl text-center lg:text-6xl font-bold mb-3"
       >
         {title} <span className="text-[#8B5DF5]">{subtitle}</span>
       </motion.h1>
-      <p className="text-lg text-gray-300 max-w-[600px]">{description}</p>
+      <p className="text-center text-lg text-gray-300 max-w-[600px]">
+        {description}
+      </p>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import RadialGradient from "../Components/RadialGradient";
 import LinearGradientModular from "../Components/LinearGradientModular";
 
 const TextGradient = () => {
-  // State to toggle between Linear and Radial gradient
+  
   const [isLinearGradient, setIsLinearGradient] = useState(true);
 
   return (
