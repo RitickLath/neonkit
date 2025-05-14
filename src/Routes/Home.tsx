@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SiNextdotjs, SiReact, SiTailwindcss, SiFramer } from "react-icons/si";
-import Cards from "../Components/Cards";
+import Cards from "../components/Cards";
 import { heroContent, thirdWords } from "../constants/HeroContent";
 import { motion } from "framer-motion";
 

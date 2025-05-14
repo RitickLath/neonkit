@@ -1,7 +1,7 @@
 import { useState } from "react";
-import TailwindColorPalette from "../Components/TailwindColorPalette";
-import PaletteButton from "../Components/PaletteButton";
-import Heading from "../Components/Heading";
+import TailwindColorPalette from "../components/TailwindColorPalette";
+import PaletteButton from "../components/PaletteButton";
+import Heading from "../components/Heading";
 import { Headings } from "../constants/Heading";
 
 const Palettes = () => {

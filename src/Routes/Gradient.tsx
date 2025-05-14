@@ -1,9 +1,9 @@
 import { useState } from "react";
-import PaletteButton from "../Components/PaletteButton";
-import Heading from "../Components/Heading";
+import Heading from "../components/Heading";
+import LinearGradientModular from "../components/LinearGradientModular";
+import PaletteButton from "../components/PaletteButton";
+import RadialGradient from "../components/RadialGradient";
 import { Headings } from "../constants/Heading";
-import RadialGradient from "../Components/RadialGradient";
-import LinearGradientModular from "../Components/LinearGradientModular";
 
 const Gradient = () => {
   // State to toggle between Linear and Radial gradient

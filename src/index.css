@@ -2,6 +2,7 @@
 body {
   background-color: black;
   position: relative;
+  overscroll-behavior-block: none;
 }
 
 body::before {
